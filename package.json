@@ -18,11 +18,11 @@
     "concat-stream": "^1.4.7",
     "duplexer": "^0.1.1",
     "ecstatic": "^0.6.0",
+    "event-stream": "^3.2.2",
     "highland": "^2.3.0",
     "marked": "^0.3.3",
     "request": "^2.53.0",
     "split": "^0.3.3",
-    "stream-combiner": "^0.2.1",
     "trumpet": "^1.7.0",
     "uuid": "^2.0.1"
   }

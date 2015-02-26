@@ -1,18 +1,25 @@
 'use strict';
 
-var through = require('through');
 var trumpet = require('trumpet');
 var fs = require('fs');
 var marked = require('marked');
+var es = require('event-stream');
 
-var tr = trumpet();
-var slides = tr.selectAll('slide', function (slide) {
-  var input = slide.createReadStream();
-  var output = slide.createWriteStream({outer: true});
+var slides = trumpet();
+var container = trumpet();
+var sliderContainer = container.select('.slides').createStream();
 
-  input.pipe(through(function (buff) {
+slides.selectAll('slide', function (slide) {
+  var stream = slide.createStream();
+
+  stream.pipe(es.through(function (buff) {
     this.queue('<section>' + marked(buff.toString()) + '</section>');
-  })).pipe(output);
+  })).pipe(stream);
 });
 
-fs.createReadStream('./source.html').pipe(tr).pipe(process.stdout);
+var pageTemplate = fs.createReadStream('../presentation/index.html').pipe(container);
+var slideTemplate = fs.createReadStream('./source.html').pipe(slides).pipe(es.wait(function (err, data) {
+  sliderContainer.end(data)
+}));
+
+container.pipe(fs.createWriteStream('./output.html'));
