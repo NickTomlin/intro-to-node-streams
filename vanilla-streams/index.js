@@ -1,5 +1,6 @@
-http://stackoverflow.com/a/25650163/1048479
+'use strict';
 
+// http://stackoverflow.com/a/25650163/1048479
 var Stream = require('stream');
 var loud = require('./loud')
 var stringify = require('./stringify')
