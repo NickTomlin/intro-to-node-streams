@@ -1,11 +1,11 @@
 An into to node streams
 ---
 
-**WIP Dawg. File an issue or PR with Questions/Comments/Hate**
+> WIP Dawg. File an issue or PR with Questions/Comments/Hate
 
 # Preface
 
-There is already tons of information out there on streams. This is merely an attempt to advocate for and synthesis a small portion of that information from _my_ perspective, mostly for my own benefit but hopefully yours as well. The sources listed under "resources" contain much, much more information and background.
+There is already tons of information out there on streams. This is merely an attempt to advocate for and synthesize a small portion of that information from _my_ perspective, mostly for my own benefit but hopefully yours as well. The sources listed under "resources" contain much, much more information and background.
 
 # Why should I care?
 
@@ -52,7 +52,7 @@ pipes are a way of connecting in put and output between programs, and a stream's
 
 # Background: IO continued
 
-This is a fanastic metaphor for talking about how to use streams, but it can also be helpful to understand the "piping" behind pipe (pun very much intended). All streams are eventEmitters that wrap asynchronous functionality. To take things to the context of the browser, we could create a very simple stream with the following psuedocode:
+Pipes are a great metaphor for talking about streams streams, but it can also be helpful to understand the "piping" behind pipe (pun very much intended). All streams are eventEmitters that wrap asynchronous functionality. To take things to the context of the browser, we could create a very simple stream with the following psuedocode:
 
     var count = 0;
     var counter = writeStream(document.querySelector('counter'));
@@ -63,6 +63,7 @@ This is a fanastic metaphor for talking about how to use streams, but it can als
       this.queue(count);
     }).pipe(counter);
 
+See `websockets-with-shoe` for an quick example of client and server side streams working in harmony.
 
 # Usage
 
@@ -84,8 +85,8 @@ Streams aren't _the_ way to do anything, bug they can be helpful, awesome, and y
 
 Resources:
 
-[stream handbook](https://github.com/substack/stream-handbook)
-[node streams - Jon Resig](http://nodestreams.com/)
-[stream adventure](https://github.com/substack/stream-adventure)
-[practical examples of the new node js streams api](http://strongloop.com/strongblog/practical-examples-of-the-new-node-js-streams-api/)
-[better data slinging with node streams](http://loose-bits.com/2012/08/02/nodejs-read-write-streams-pipes.html)
+- [stream handbook](https://github.com/substack/stream-handbook)
+- [node streams - Jon Resig](http://nodestreams.com/)
+- [stream adventure](https://github.com/substack/stream-adventure)
+- [practical examples of the new node js streams api](http://strongloop.com/strongblog/practical-examples-of-the-new-node-js-streams-api/)
+- [better data slinging with node streams](http://loose-bits.com/2012/08/02/nodejs-read-write-streams-pipes.html)
