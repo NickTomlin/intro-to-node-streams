@@ -2,10 +2,13 @@
 
 var trumpet = require('trumpet');
 var fs = require('fs');
+var path = require('path');
 var marked = require('marked');
 var es = require('event-stream');
 
-var outfile = fs.createWriteStream('../presentation/output.html');
+var outfile = fs.createWriteStream(path.join(__dirname, '../presentation/output.html'));
+var slideFile = path.join(__dirname, './source.html');
+var presentationFile = path.join(__dirname, '../presentation/index.html');
 // readable/writible stream
 var slides = trumpet();
 var container = trumpet();
@@ -24,5 +27,5 @@ slides.selectAll('section', function (slide) {
   })).pipe(stream);
 });
 
-fs.createReadStream('./source.html').pipe(slides).pipe(sliderContainer);
-fs.createReadStream('../presentation/index.html').pipe(container).pipe(outfile);
+fs.createReadStream(slideFile).pipe(slides).pipe(sliderContainer);
+fs.createReadStream(presentationFile).pipe(container).pipe(outfile);
