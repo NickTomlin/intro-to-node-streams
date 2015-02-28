@@ -1,9 +1,11 @@
-An introduction to node streams
+An into to node streams
 ---
+
+**WIP Dawg. File an issue or PR with Questions/Comments/Hate**
 
 # Preface
 
-There is already tons of information out there on streams. This is merely an attempt to advocate for and synthesis a small portion of that information from _my_ perspective. The sources listed under "resources" contain much, much more information and background.
+There is already tons of information out there on streams. This is merely an attempt to advocate for and synthesis a small portion of that information from _my_ perspective, mostly for my own benefit but hopefully yours as well. The sources listed under "resources" contain much, much more information and background.
 
 # Why should I care?
 
@@ -34,11 +36,41 @@ Streams provide a an elegant and fun way to write asynchronous code:
 
 This is a readable way of expressing how a series of files goes thourgh a transformation.
 
+# Background: IO
+
+Node streams are commonly compared to unix pipes:
+
+    # read diary.txt, pass the contents to `wc` which returns a count of the lines
+    cat diary.txt | wc -l
+    > 3
+
+pipes are a way of connecting in put and output between programs, and a stream's `pipe` method provides a similar function:
+
+    # let's pretend we have a transfom stream called countLines
+    fs.createReadStream('diary.txt').pipe(countLines).pipe(process.stdout);
+    > 3
+
+# Background: IO continued
+
+This is a fanastic metaphor for talking about how to use streams, but it can also be helpful to understand the "piping" behind pipe (pun very much intended). All streams are eventEmitters that wrap asynchronous functionality. To take things to the context of the browser, we could create a very simple stream with the following psuedocode:
+
+    var count = 0;
+    var counter = writeStream(document.querySelector('counter'));
+    var buttonClick = streamEvent(document.querySelector('button'), 'click');
+
+    buttonClick.pipe(through(function () {
+      count++;
+      this.queue(count);
+    }).pipe(counter);
+
+
 # Usage
 
 The most common use case is consuming through a utility, like gulp or browserify, but you can implement your own tool on top of streams quite easily using node's built in streaming capabilities and a few stream utility libraries (like [`through`](https://github.com/rvagg/through2)).
 
 ## Subclassing
+
+The streams modules in node provide provide templates, which require you to implement a few methods to get your own version of a stream. See `vanilla-streams/readable/build-your-own.js` for an example.
 
 ## In the browser
 
