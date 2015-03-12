@@ -15,7 +15,7 @@ Streams provide an elegant and fun way to write asynchronous code:
 
     fs.createReadStream('data.csv')
       .pipe(request.post('/account-data'))
-      .pipe(fs.createReadStream('processed-data-response.json'))
+      .pipe(fs.createWriteStream('processed-data-response.json'))
 
 
 ## Streams are everywhere in node-land
