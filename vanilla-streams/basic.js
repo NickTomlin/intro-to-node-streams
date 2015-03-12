@@ -2,7 +2,7 @@
 
 var fs = require('fs')
 var path = require('path');
-var helloFilePath = path.join(__dirname, './files/hello.txt');
+var helloFilePath = path.join(__dirname, '../files/hello.txt');
 
 // many things in node core have streaming abilities. The most easily useful being HTTP and FS
 // here we open a simple text file with a readable stream, and use a streams `.pipe` method
