@@ -1,4 +1,4 @@
-An into to node streams
+An intro to node streams
 ---
 
 > WIP Dawg. File an issue or PR with Questions/Comments/Hate
