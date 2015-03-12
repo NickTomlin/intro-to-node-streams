@@ -52,7 +52,7 @@ pipes are a way of connecting in put and output between programs, and a stream's
 
 # Background: IO continued
 
-Pipes are a great metaphor for talking about streams streams, but it can also be helpful to understand the "piping" behind pipe (pun very much intended). All streams are eventEmitters that wrap asynchronous functionality. To take things to the context of the browser, we could create a very simple stream with the following psuedocode:
+Pipes are a great metaphor for talking about streams, but it can also be helpful to understand the "piping" behind pipe (pun very much intended). All streams are eventEmitters that wrap asynchronous functionality. To take things to the context of the browser, we could create a very simple stream with the following psuedocode:
 
     var count = 0;
     var counter = writeStream(document.querySelector('counter'));
