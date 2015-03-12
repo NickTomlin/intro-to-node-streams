@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var readStream = require('fs').createReadStream;
+var merge = require('event-stream').merge;
+var args = Array.prototype.slice.call(process.argv, 2);
+
+if (args.length == 0)
+  return process.stdin.pipe(process.stdout);
+
+var files = args.map(function (filePath) {
+  return readStream(filePath);
+});
+
+merge.apply(null, files).pipe(process.stdout);

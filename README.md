@@ -11,7 +11,7 @@ There is already tons of information out there on streams. This is merely an att
 
 ## Elegance
 
-Streams provide a an elegant and fun way to write asynchronous code:
+Streams provide an elegant and fun way to write asynchronous code:
 
     fs.createReadStream('data.csv')
       .pipe(request.post('/account-data'))
@@ -34,7 +34,7 @@ Streams provide a an elegant and fun way to write asynchronous code:
       // ... your streams here
       .pipe(gulp.dest('dist/js'))
 
-This is a readable way of expressing how a series of files goes thourgh a transformation.
+This is a readable way of expressing how a series of files goes through a transformation.
 
 # Background: IO
 
